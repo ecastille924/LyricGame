@@ -11,14 +11,16 @@
 </head>
 <body>
     <h1 class= "app-title">Lyric Guesser</h1>
-    <h5>Put your music knowledge to the test!</h5>
-    <div id= "lyrics-container">
+    <p class= "subtitle">Put your music knowledge to the test!</p>
+    <div id= "lyrics-container" class= "lyrics">
     
     </div>
     
-    <button class= "button" onclick= "fetchOneRandomLyric()">Random Song Lyric</button><br>
-    <button class= "button" onclick= "revealArtist(), revealLyricInfo()">Reveal Artist</button>
-    
+    <div class= "button-div">
+        <button class= "button" onclick= "fetchOneRandomLyric()">Random Song Lyric</button><br>
+        <button class= "button" onclick= "revealArtist(), revealLyricInfo()">Reveal Artist</button>
+    </div>
+
     <div id= "artist-container" class= "artist-name">
         
     </div>

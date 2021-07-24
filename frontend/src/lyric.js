@@ -22,7 +22,7 @@ class Lyric {
         let lyricsContainer = document.getElementById("lyrics-container")
         lyricsContainer.innerHTML = 
         `
-            <p>${this.content}<p>
+            <p>"${this.content}"<p>
         `  
        
     }   
