@@ -51,7 +51,22 @@ function createForm(){
     <input type= "submit" value= "Submit">
     </form>
     `
+    lyricForm.addEventListener("submit", formSubmission)
 }
+
+
+
+function formSubmission(){
+    let content = document.getElementById("lyric-content").value
+    let songName = document.getElementById("song-name").value
+    let artistName = document.getElementById("artist-name").value
+    let albumName = document.getElementById("album-name").value
+    let releaseYear = document.getElementById("release-year").value
+    let genre = document.getElementById("genre").value
+  
+}
+
+
 
 // This fetch request is not being used currently.
 function fetchLyrics(){
