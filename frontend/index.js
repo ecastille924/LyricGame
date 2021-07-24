@@ -57,6 +57,7 @@ function createForm(){
 
 
 function formSubmission(){
+    event.preventDefault();
     let content = document.getElementById("lyric-content").value
     let songName = document.getElementById("song-name").value
     let artistName = document.getElementById("artist-name").value
@@ -64,6 +65,43 @@ function formSubmission(){
     let releaseYear = document.getElementById("release-year").value
     let genre = document.getElementById("genre").value
   
+    let lyric = {
+        content: content,
+        songName: songName,
+        releaseYear: releaseYear,
+        albumName: albumName,
+        genre: genre
+    }
+
+    let artist = {
+        artistName: artistName
+    }
+
+    fetch(`${baseUrl}/artists`, {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(artist)
+    })
+    .then(resp => resp.json())
+    .then(artist => {
+        let a = new Artist(artist.artistName, artist.id)
+
+        return  fetch(`${baseUrl}/lyrics`, {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(lyric)
+            })
+            .then(resp => resp.json())
+            .then(lyric => {
+                let l = new Lyric(lyric.id, lyric.content, lyric.songName, lyric.releaseYear, lyric.albumName, lyric.genre)
+            })
+        })
 }
 
 
