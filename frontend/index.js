@@ -19,7 +19,9 @@ function fetchLyrics(){
 
 function fetchOneRandomLyric()
 {   n = document.getElementById("artist-container")
+    l = document.getElementById("lyric-info-container")
     n.style.visibility = "hidden"
+    l.style.visibility = "hidden"
     let id = Math.floor(Math.random() * (1, 3) + 1)
     fetch(`${baseUrl}/lyrics`)
     .then(resp => resp.json())
