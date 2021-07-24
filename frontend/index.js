@@ -27,6 +27,7 @@ function fetchOneRandomLyric()
         for (const lyric of lyrics){
             if(lyric.id == id){
                 let l = new Lyric(lyric.content, lyric.songName, lyric.albumName, lyric.releaseYear, lyric.genre, lyric.artist_id)
+                l.renderLyricInfo();
                 l.renderLyricContent();
                 return fetch(`${baseUrl}/artists`)
                 .then(resp => resp.json())
@@ -48,6 +49,11 @@ function fetchOneRandomLyric()
 function revealArtist(){
     n = document.getElementById("artist-container")
    n.style.visibility = "visible"
+}
+
+function revealLyricInfo(){
+    i = document.getElementById("lyric-info-container")
+    i.style.visibility = "visible"
 }
 
 // function fetchArtist(){

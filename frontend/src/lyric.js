@@ -9,17 +9,24 @@ class Lyric {
         this.artist_id = artist_id;
     }
 
-    
+    renderLyricInfo(){
+        let lyricInfoContainer = document.getElementById("lyric-info-container")
+        lyricInfoContainer.innerHTML =
+        `
+            <ul>
+            <h4>${this.songName} - ${this.releaseYear}</h4>
+            <h3>${this.genre}</h3>
+            </ul>
+        `
+    }
     renderLyricContent(){
         let lyricsContainer = document.getElementById("lyrics-container")
-    
         lyricsContainer.innerHTML = 
         `
             <ul>
             <p>${this.content}<p>
-            <h4>${this.songName} - ${this.releaseYear}</h4>
-            <h3>${this.genre}</h3>
             </ul>
-        `    
+        `  
+       
     }   
 }
