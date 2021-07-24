@@ -8,9 +8,7 @@ class Artist{
     
         artistContainer.innerHTML = 
         `
-            <ul>
             <h3>${this.artistName}</h3>
-            </ul>
         `    
     }   
 

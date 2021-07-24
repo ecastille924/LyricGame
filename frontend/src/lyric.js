@@ -10,15 +10,15 @@ class Lyric {
     }
 
     
-    renderLyricData(){
+    renderLyricContent(){
         let lyricsContainer = document.getElementById("lyrics-container")
     
         lyricsContainer.innerHTML = 
         `
             <ul>
-            <h3>${this.genre}</h3>
+            <p>${this.content}<p>
             <h4>${this.songName} - ${this.releaseYear}</h4>
-            <li>${this.content}</li>
+            <h3>${this.genre}</h3>
             </ul>
         `    
     }   
