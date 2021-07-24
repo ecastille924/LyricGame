@@ -1,21 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-    fetchLyrics();
-    // fetchArtist();
+    // fetchLyrics();
+    fetchOneRandomLyric();
 })
 
 const baseUrl = "http://localhost:3000"
- 
-
-function fetchLyrics(){
-    fetch(`${baseUrl}/lyrics`)
-    .then(resp => resp.json())
-    .then(lyrics => {
-        for (const lyric of lyrics){
-            let l = new Lyric(lyric.content, lyric.songName, lyric.albumName, lyric.releaseYear, lyric.genre, lyric.artist_id)
-            // l.renderLyricData();
-        }     
-    })
-}
 
 function fetchOneRandomLyric()
 {   n = document.getElementById("artist-container")
@@ -48,6 +36,18 @@ function fetchOneRandomLyric()
     })
 }
 
+// This fetch request is not being used currently.
+function fetchLyrics(){
+    fetch(`${baseUrl}/lyrics`)
+    .then(resp => resp.json())
+    .then(lyrics => {
+        for (const lyric of lyrics){
+            let l = new Lyric(lyric.content, lyric.songName, lyric.albumName, lyric.releaseYear, lyric.genre, lyric.artist_id)
+            // l.renderLyricData();
+        }     
+    })
+}
+
 function revealArtist(){
     n = document.getElementById("artist-container")
    n.style.visibility = "visible"
@@ -58,36 +58,11 @@ function revealLyricInfo(){
     i.style.visibility = "visible"
 }
 
-// function fetchArtist(){
-//     fetch(`${baseUrl}/artists`)
-//     .then(resp => resp.json())
-//     .then(artists => {
-//         for (const artist of artists){
-//             if(artist.id == lyric.artist_id)
-//             let a = new Artist(artist.artistName)
-//             a.renderArtist();
-//         }    
-//     })
-// }
 
-// function fetchOneArtist(id){
-//     fetch(`${baseUrl}/artists`)
-//     .then(resp => resp.json())
-//     .then(artists => {
-//         for (const artist of artists){
-//             if(artist.id == id){
-//                 let a = new Artist(artist.artistName)
-//                 a.renderArtist();
-//                 break;
-//             }
            
-//         }    
-//     })
-// }
 
 
 
-    //read- show individual, randomized lyric
 
     // create - create new lyric (with artist association)
 

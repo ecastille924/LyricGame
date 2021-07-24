@@ -10,19 +10,22 @@
     <link rel="stylesheet" type="text/css" href="src/style.css">
 </head>
 <body>
-    <h1>Lyric Guesser</h1>
+    <h1 class= "app-title">Lyric Guesser</h1>
     <h5>Put your music knowledge to the test!</h5>
     <div id= "lyrics-container">
     
     </div>
+    
+    <button onclick= "fetchOneRandomLyric()">Random Song Lyric</button><br>
+    <button onclick= "revealArtist(), revealLyricInfo()">Reveal Artist</button>
+    
     <div id= "artist-container" class= "artist-name">
         
     </div>
     <div id= "lyric-info-container" class = "lyric-info">
 
     </div>
-<button onclick= "fetchOneRandomLyric()">Random Song Lyric</button>
-<button onclick= "revealArtist(), revealLyricInfo()">Reveal Artist</button>  
+  
     
 </body>
 </html>
