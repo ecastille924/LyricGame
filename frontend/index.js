@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     // fetchLyrics();
     fetchOneRandomLyric();
+    createForm()
 })
 
 const baseUrl = "http://localhost:3000"
@@ -34,6 +35,22 @@ function fetchOneRandomLyric()
             }
         }    
     })
+}
+
+function createForm(){
+    let lyricForm = document.getElementById("lyric-submit-form")
+    lyricForm.innerHTML =
+    `
+    <form>
+    Song Lyric: <input type= "text" id="lyric-content"><br>
+    Song Title: <input type= "text" id="song-name"><br>
+    Artist Name: <input type= "text" id="artist-name"><br>
+    Album Name: <input type= "text" id="album-name"><br>
+    Year Released: <input type= "text" id="release-year"><br>
+    Genre: <input type= "text" id="genre"><br>
+    <input type= "submit" value= "Submit">
+    </form>
+    `
 }
 
 // This fetch request is not being used currently.
