@@ -44,15 +44,14 @@ function createForm(){
     let lyricForm = document.getElementById("lyric-submit-form")
     lyricForm.innerHTML =
     `
-    <form id="new-lyric">
-    Song Lyric:<br>
-    <textarea rows= "4" id="lyric-content" class="lyric-content"></textarea><br>
-    Song Title: <input type= "text" id="song-name"><br>
-    Artist Name: <input type= "text" id="artist-name"><br>
-    Album Name: <input type= "text" id="album-name"><br>
-    Year Released: <input type= "integer" id="release-year"><br>
-    Genre: <input type= "text" id="genre"><br>
-    <input onclick="clear() "type= "submit" value= "Submit" >
+    <form id="new-lyric" class="new-lyr-form">
+    <textarea rows= "4" id="lyric-content" class="new-lyr-form-fields" placeholder= "Song Lyric"></textarea><br>
+    <input type= "text" id="song-name" class="new-lyr-form-fields" placeholder="Song Title"><br>
+    <input type= "text" id="artist-name" class="new-lyr-form-fields" placeholder= "Artist"><br>
+    <input type= "text" id="album-name" class="new-lyr-form-fields" placeholder= "Album Name"><br>
+    <input type= "integer" id="release-year" class="new-lyr-form-fields" placeholder= "Year Released"><br>
+    <input type= "text" id="genre" class="new-lyr-form-fields" placeholder= "Genre"><br>
+    <input onclick="clear() "type= "submit" value= "Submit" class= "button">
     </form>
     `
 

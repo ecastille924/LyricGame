@@ -10,6 +10,10 @@ body{
     height:40px
   } */
 
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+
   .artist-name{
     font-family: sans-serif;
     color: #333;
@@ -74,6 +78,14 @@ body{
     border-width: 3px;
     border-collapse:inherit;
     background-color: rgba(247, 197, 252, 0.664);
+  }
+
+  .new-lyr-form-fields{
+    padding:10px;
+    border-radius:10px;
+    border-style: solid;
+    font-family: sans-serif;
+    width: 500px;
   }
 
   .button-div{
