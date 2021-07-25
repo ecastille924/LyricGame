@@ -41,20 +41,25 @@ function createForm(){
     let lyricForm = document.getElementById("lyric-submit-form")
     lyricForm.innerHTML =
     `
-    <form>
+    <form id="new-lyric">
     Song Lyric: <input type= "text" id="lyric-content"><br>
     Song Title: <input type= "text" id="song-name"><br>
     Artist Name: <input type= "text" id="artist-name"><br>
     Album Name: <input type= "text" id="album-name"><br>
     Year Released: <input type= "integer" id="release-year"><br>
     Genre: <input type= "text" id="genre"><br>
-    <input type= "submit" value= "Submit">
+    <input onclick="clear() "type= "submit" value= "Submit" >
     </form>
     `
+
     lyricForm.addEventListener("submit", () => {
         lyricSubmission();
-        // lyricSubmission();
     })
+    
+}
+
+function clearForm(){
+    document.getElementById("new-lyric").reset()
 }
 
 // let configObj = {
@@ -96,7 +101,6 @@ function lyricSubmission(){
             genre: genre,
             artist_id: artist_id
         }
-        debugger
         return fetch(`${baseUrl}/lyrics`, {
             method: "POST",
             headers: {
@@ -108,15 +112,10 @@ function lyricSubmission(){
         .then(res => res.json())
         .then(lyric => { 
             let l = new Lyric(lyric.content, lyric.songName, lyric.albumName, lyric.releaseYear, lyric.genre, lyric.artist_id)
+            .then(clearForm())
         })
      })
 }
-
-// function lyricSubmission(){
-//     event.preventDefault();
-   
-// }
-
 
 
 // This fetch request is not being used currently.
