@@ -9,9 +9,12 @@ const baseUrl = "http://localhost:3000"
 function fetchOneRandomLyric()
 {   n = document.getElementById("artist-container")
     l = document.getElementById("lyric-info-container")
+    f = document.getElementById("lyric-submit-form")
     n.style.visibility = "hidden"
     l.style.visibility = "hidden"
-    let id = Math.floor(Math.random() * (1, 3) + 1)
+    f.style.visibility = "hidden"
+    // Highest number argument should match total DB records
+    let id = Math.floor(Math.random() * (1, 4) + 1)
     fetch(`${baseUrl}/lyrics`)
     .then(resp => resp.json())
     .then(lyrics => {
@@ -62,13 +65,6 @@ function clearForm(){
     document.getElementById("new-lyric").reset()
 }
 
-// let configObj = {
-//         method: "POST",
-//         headers: {
-//             'Accept': 'application/json',
-//             'Content-Type': 'application/json'
-//         }
-//     }
 
 function lyricSubmission(){
     event.preventDefault();
@@ -132,12 +128,17 @@ function fetchLyrics(){
 
 function revealArtist(){
     n = document.getElementById("artist-container")
-   n.style.visibility = "visible"
+    n.style.visibility = "visible"
 }
 
 function revealLyricInfo(){
     i = document.getElementById("lyric-info-container")
     i.style.visibility = "visible"
+}
+
+function revealForm(){
+    f = document.getElementById("lyric-submit-form")
+    f.style.visibility = "visible"
 }
 
 
