@@ -55,6 +55,14 @@ body{
 	  transition: all 0.4s ease 0s;
   }
 
+  .lyric-info-outer{
+    border-style:solid;
+    border-radius: 5px;
+    border-width: 3px;
+    border-collapse:inherit;
+    background-color: rgba(247, 197, 252, 0.664);
+  }
+
   .button-div{
     /* width: 145px; */
     /* background-color:hotpink;
