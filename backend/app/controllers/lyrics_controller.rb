@@ -46,6 +46,6 @@ class LyricsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def lyric_params
-      params.require(:lyric).permit(:content, :songName, :albumName, :releaseYear, :genre)
+      params.require(:lyric).permit(:content, :songName, :albumName, :releaseYear, :genre, :artist_id)
     end
 end

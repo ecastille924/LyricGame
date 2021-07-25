@@ -46,37 +46,31 @@ function createForm(){
     Song Title: <input type= "text" id="song-name"><br>
     Artist Name: <input type= "text" id="artist-name"><br>
     Album Name: <input type= "text" id="album-name"><br>
-    Year Released: <input type= "text" id="release-year"><br>
+    Year Released: <input type= "integer" id="release-year"><br>
     Genre: <input type= "text" id="genre"><br>
     <input type= "submit" value= "Submit">
     </form>
     `
-    lyricForm.addEventListener("submit", formSubmission)
+    lyricForm.addEventListener("submit", () => {
+        lyricSubmission();
+        // lyricSubmission();
+    })
 }
 
+// let configObj = {
+//         method: "POST",
+//         headers: {
+//             'Accept': 'application/json',
+//             'Content-Type': 'application/json'
+//         }
+//     }
 
-
-function formSubmission(){
+function lyricSubmission(){
     event.preventDefault();
-    let content = document.getElementById("lyric-content").value
-    let songName = document.getElementById("song-name").value
     let artistName = document.getElementById("artist-name").value
-    let albumName = document.getElementById("album-name").value
-    let releaseYear = document.getElementById("release-year").value
-    let genre = document.getElementById("genre").value
-  
-    let lyric = {
-        content: content,
-        songName: songName,
-        releaseYear: releaseYear,
-        albumName: albumName,
-        genre: genre
-    }
-
     let artist = {
         artistName: artistName
     }
-
     fetch(`${baseUrl}/artists`, {
         method: "POST",
         headers: {
@@ -88,21 +82,40 @@ function formSubmission(){
     .then(resp => resp.json())
     .then(artist => {
         let a = new Artist(artist.artistName, artist.id)
-
-        return  fetch(`${baseUrl}/lyrics`, {
-                method: "POST",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(lyric)
-            })
-            .then(resp => resp.json())
-            .then(lyric => {
-                let l = new Lyric(lyric.id, lyric.content, lyric.songName, lyric.releaseYear, lyric.albumName, lyric.genre)
-            })
+        let content = document.getElementById("lyric-content").value
+        let songName = document.getElementById("song-name").value
+        let albumName = document.getElementById("album-name").value
+        let releaseYear = document.getElementById("release-year").value
+        let genre = document.getElementById("genre").value
+        let artist_id = a.id
+        let lyric = {
+            content: content,
+            songName: songName,
+            releaseYear: releaseYear,
+            albumName: albumName,
+            genre: genre,
+            artist_id: artist_id
+        }
+        debugger
+        return fetch(`${baseUrl}/lyrics`, {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(lyric)
         })
+        .then(res => res.json())
+        .then(lyric => { 
+            let l = new Lyric(lyric.content, lyric.songName, lyric.albumName, lyric.releaseYear, lyric.genre, lyric.artist_id)
+        })
+     })
 }
+
+// function lyricSubmission(){
+//     event.preventDefault();
+   
+// }
 
 
 
@@ -112,7 +125,7 @@ function fetchLyrics(){
     .then(resp => resp.json())
     .then(lyrics => {
         for (const lyric of lyrics){
-            let l = new Lyric(lyric.content, lyric.songName, lyric.albumName, lyric.releaseYear, lyric.genre, lyric.artist_id)
+            let l = new Lyric(lyric.content, lyric.songName, lyric.albumName, lyric.releaseYear, lyric.genre, lyric.id)
             // l.renderLyricData();
         }     
     })
