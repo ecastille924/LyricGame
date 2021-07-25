@@ -6,6 +6,10 @@ body{
     background-color: rgb(173, 206, 252);
   }
 
+  /* .lyric-content{
+    height:40px
+  } */
+
   .artist-name{
     font-family: sans-serif;
     color: #333;

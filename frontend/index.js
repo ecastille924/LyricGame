@@ -13,8 +13,8 @@ function fetchOneRandomLyric()
     n.style.visibility = "hidden"
     l.style.visibility = "hidden"
     f.style.visibility = "hidden"
-    // Highest number argument should match total DB records
-    let id = Math.floor(Math.random() * (1, 4) + 1)
+    // Second argument in math.random should match total DB records
+    let id = Math.floor(Math.random() * (1, 5) + 1)
     fetch(`${baseUrl}/lyrics`)
     .then(resp => resp.json())
     .then(lyrics => {
@@ -45,7 +45,8 @@ function createForm(){
     lyricForm.innerHTML =
     `
     <form id="new-lyric">
-    Song Lyric: <input type= "text" id="lyric-content"><br>
+    Song Lyric:<br>
+    <textarea rows= "4" id="lyric-content" class="lyric-content"></textarea><br>
     Song Title: <input type= "text" id="song-name"><br>
     Artist Name: <input type= "text" id="artist-name"><br>
     Album Name: <input type= "text" id="album-name"><br>
