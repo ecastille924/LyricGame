@@ -13,9 +13,9 @@ class Lyric {
         let lyricInfoContainer = document.getElementById("lyric-info-container")
         lyricInfoContainer.innerHTML =
         `
-            <h4>Song: ${this.songName} - ${this.releaseYear}</h4>
-            <h4>Album: ${this.albumName}</h4>
-            <h5>Genre: ${this.genre}</h5>
+            <h4 class= "lyric-info-text">Song: ${this.songName} - ${this.releaseYear}</h4>
+            <h4 class= "lyric-info-text">Album: ${this.albumName}</h4>
+            <h5 class= "lyric-info-text">Genre: ${this.genre}</h5>
         `
     }
     renderLyricContent(){
