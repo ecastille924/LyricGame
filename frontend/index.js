@@ -136,19 +136,16 @@ function revealLyricInfo(){
     i.style.visibility = "visible"
 }
 
-function revealForm(){
-    f = document.getElementById("lyric-submit-form")
-    f.style.visibility = "visible"
-}
-
 function toggleForm(){
     f = document.getElementById("lyric-submit-form")
-    // f.style.visibility = "hidden"
+    b = document.getElementById("reveal-form-btn")
     if (f.style.display == "none"){
         f.style.display = "block";
+        b.innerHTML = "Hide Form";
     }
     else  {
         f.style.display= "none";
+        b.innerHTML = "Submit Lyric Request";
     }
 }
            
