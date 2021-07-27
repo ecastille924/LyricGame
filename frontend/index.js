@@ -50,7 +50,7 @@ function createForm(){
     <input type= "text" id="artist-name" class="new-lyr-form-fields" placeholder= "Artist" oninvalid="this.setCustomValidity('Please enter artist name!')" oninput=setCustomValidity('') required ><br>
     <input type= "text" id="album-name" class="new-lyr-form-fields" placeholder= "Album Name" oninvalid="this.setCustomValidity('Please enter song album name!')" oninput=setCustomValidity('') required ><br>
     <input type= "integer" id="release-year" class="new-lyr-form-fields" placeholder= "Year Released" oninvalid="this.setCustomValidity('Please enter release year!')" oninput=setCustomValidity('') required ><br>
-    <input type= "text" id="genre" class="new-lyr-form-fields" placeholder= "Genre" required ><br>
+    <input type= "text" id="genre" class="new-lyr-form-fields" placeholder= "Genre" oninvalid="this.setCustomValidity('Please enter genre!')" oninput=setCustomValidity('') required ><br>
     <input onclick="clear() "type= "submit" value= "Submit" class= "button">
     </form>
     `
@@ -137,7 +137,7 @@ function clearForm(){
 
 
 
-// This fetch request is not being used currently.
+// Count total records -- This fetch request is not being used currently.
 function countLyrics(){
     fetch(`${baseUrl}/lyrics`)
     .then(resp => resp.json())
