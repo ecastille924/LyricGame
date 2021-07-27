@@ -15,7 +15,7 @@ function fetchOneRandomLyric()
     l.style.visibility = "hidden"
     f.style.display = "none"
     // Second argument in math.random should match total DB records
-    let id = Math.floor(Math.random() * (1, 22) + 1)
+    let id = Math.floor(Math.random() * 23)
     fetch(`${baseUrl}/lyrics`)
     .then(resp => resp.json())
     .then(lyrics => {
@@ -31,7 +31,6 @@ function fetchOneRandomLyric()
                         if(artist.id == lyric.artist_id){
                             let a = new Artist(artist.artistName)
                             a.renderArtist();
-                            break;
                         }
                        
                     }    
@@ -46,11 +45,11 @@ function createForm(){
     lyricForm.innerHTML =
     `
     <form id="new-lyric" class="new-lyr-form">
-    <textarea rows= "4" id="lyric-content" class="new-lyr-form-fields" placeholder= "Song Lyric" required ></textarea><br>
-    <input type= "text" id="song-name" class="new-lyr-form-fields" placeholder="Song Title" required ><br>
-    <input type= "text" id="artist-name" class="new-lyr-form-fields" placeholder= "Artist" required ><br>
-    <input type= "text" id="album-name" class="new-lyr-form-fields" placeholder= "Album Name" required ><br>
-    <input type= "integer" id="release-year" class="new-lyr-form-fields" placeholder= "Year Released" required ><br>
+    <textarea rows= "4" id="lyric-content" class="new-lyr-form-fields" placeholder= "Song Lyric" oninvalid="this.setCustomValidity('Please enter song lyrics!')" oninput=setCustomValidity('') required ></textarea><br>
+    <input type= "text" id="song-name" class="new-lyr-form-fields" placeholder="Song Title" oninvalid="this.setCustomValidity('Please enter song title!')" oninput=setCustomValidity('') required ><br>
+    <input type= "text" id="artist-name" class="new-lyr-form-fields" placeholder= "Artist" oninvalid="this.setCustomValidity('Please enter artist name!')" oninput=setCustomValidity('') required ><br>
+    <input type= "text" id="album-name" class="new-lyr-form-fields" placeholder= "Album Name" oninvalid="this.setCustomValidity('Please enter song album name!')" oninput=setCustomValidity('') required ><br>
+    <input type= "integer" id="release-year" class="new-lyr-form-fields" placeholder= "Year Released" oninvalid="this.setCustomValidity('Please enter release year!')" oninput=setCustomValidity('') required ><br>
     <input type= "text" id="genre" class="new-lyr-form-fields" placeholder= "Genre" required ><br>
     <input onclick="clear() "type= "submit" value= "Submit" class= "button">
     </form>
@@ -139,14 +138,11 @@ function clearForm(){
 
 
 // This fetch request is not being used currently.
-function fetchLyrics(){
+function countLyrics(){
     fetch(`${baseUrl}/lyrics`)
     .then(resp => resp.json())
-    .then(lyrics => {
-        for (const lyric of lyrics){
-            let l = new Lyric(lyric.content, lyric.songName, lyric.albumName, lyric.releaseYear, lyric.genre, lyric.id)
-            // l.renderLyricData();
-        }     
+    .then(json => {
+            return Object.keys(json).length
     })
 }
 
