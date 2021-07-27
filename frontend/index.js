@@ -15,7 +15,7 @@ function fetchOneRandomLyric()
     l.style.visibility = "hidden"
     f.style.display = "none"
     // Second argument in math.random should match total DB records
-    let id = Math.floor(Math.random() * 23)
+    let id = Math.floor(Math.random() * (25) + 1)
     fetch(`${baseUrl}/lyrics`)
     .then(resp => resp.json())
     .then(lyrics => {
