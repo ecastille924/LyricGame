@@ -15,7 +15,7 @@ function fetchOneRandomLyric()
     l.style.visibility = "hidden"
     f.style.display = "none"
     // Second argument in math.random should match total DB records
-    let id = Math.floor(Math.random() * (1, 8) + 1)
+    let id = Math.floor(Math.random() * (1, 22) + 1)
     fetch(`${baseUrl}/lyrics`)
     .then(resp => resp.json())
     .then(lyrics => {
@@ -46,12 +46,12 @@ function createForm(){
     lyricForm.innerHTML =
     `
     <form id="new-lyric" class="new-lyr-form">
-    <textarea rows= "4" id="lyric-content" class="new-lyr-form-fields" placeholder= "Song Lyric"></textarea><br>
-    <input type= "text" id="song-name" class="new-lyr-form-fields" placeholder="Song Title"><br>
-    <input type= "text" id="artist-name" class="new-lyr-form-fields" placeholder= "Artist"><br>
-    <input type= "text" id="album-name" class="new-lyr-form-fields" placeholder= "Album Name"><br>
-    <input type= "integer" id="release-year" class="new-lyr-form-fields" placeholder= "Year Released"><br>
-    <input type= "text" id="genre" class="new-lyr-form-fields" placeholder= "Genre"><br>
+    <textarea rows= "4" id="lyric-content" class="new-lyr-form-fields" placeholder= "Song Lyric" required ></textarea><br>
+    <input type= "text" id="song-name" class="new-lyr-form-fields" placeholder="Song Title" required ><br>
+    <input type= "text" id="artist-name" class="new-lyr-form-fields" placeholder= "Artist" required ><br>
+    <input type= "text" id="album-name" class="new-lyr-form-fields" placeholder= "Album Name" required ><br>
+    <input type= "integer" id="release-year" class="new-lyr-form-fields" placeholder= "Year Released" required ><br>
+    <input type= "text" id="genre" class="new-lyr-form-fields" placeholder= "Genre" required ><br>
     <input onclick="clear() "type= "submit" value= "Submit" class= "button">
     </form>
     `
