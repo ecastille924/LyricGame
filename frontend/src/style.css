@@ -63,9 +63,11 @@ body{
     border-width: 3px;
     border-collapse:inherit;
     background-color: rgba(247, 197, 252, 0.664);
+    /* background-image: url("/Users/erick/Development/code/lyric_guesser/images/scribble_light_@2X.png"); */
   }
 
   .lyric-info-outer{
+    /* display: inline-block; */
     margin-top: 12px;
     margin-bottom: 12px;
     border-style:solid;
@@ -73,6 +75,7 @@ body{
     border-width: 3px;
     border-collapse:inherit;
     background-color: rgba(247, 197, 252, 0.664);
+    
   }
 
   .artist-text{

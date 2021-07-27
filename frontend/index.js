@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // fetchLyrics();
     fetchOneRandomLyric();
     createForm()
 })
@@ -14,7 +13,7 @@ function fetchOneRandomLyric()
     l.style.visibility = "hidden"
     f.style.display = "none"
     // Second argument in math.random should match total DB records
-    let id = Math.floor(Math.random() * (1, 5) + 1)
+    let id = Math.floor(Math.random() * (1, 8) + 1)
     fetch(`${baseUrl}/lyrics`)
     .then(resp => resp.json())
     .then(lyrics => {
@@ -60,11 +59,6 @@ function createForm(){
     })
     
 }
-
-function clearForm(){
-    document.getElementById("new-lyric").reset()
-}
-
 
 function lyricSubmission(){
     event.preventDefault();
@@ -113,19 +107,6 @@ function lyricSubmission(){
      })
 }
 
-
-// This fetch request is not being used currently.
-function fetchLyrics(){
-    fetch(`${baseUrl}/lyrics`)
-    .then(resp => resp.json())
-    .then(lyrics => {
-        for (const lyric of lyrics){
-            let l = new Lyric(lyric.content, lyric.songName, lyric.albumName, lyric.releaseYear, lyric.genre, lyric.id)
-            // l.renderLyricData();
-        }     
-    })
-}
-
 function revealArtist(){
     n = document.getElementById("artist-container")
     n.style.visibility = "visible"
@@ -149,12 +130,22 @@ function toggleForm(){
     }
 }
            
+function clearForm(){
+    document.getElementById("new-lyric").reset()
+}
 
 
 
-
-    // create - create new lyric (with artist association)
-
-    // delete - delete a lyric
+// This fetch request is not being used currently.
+function fetchLyrics(){
+    fetch(`${baseUrl}/lyrics`)
+    .then(resp => resp.json())
+    .then(lyrics => {
+        for (const lyric of lyrics){
+            let l = new Lyric(lyric.content, lyric.songName, lyric.albumName, lyric.releaseYear, lyric.genre, lyric.id)
+            // l.renderLyricData();
+        }     
+    })
+}
 
 
