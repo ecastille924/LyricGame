@@ -9,6 +9,8 @@ function fetchOneRandomLyric()
 {   n = document.getElementById("artist-container")
     l = document.getElementById("lyric-info-container")
     f = document.getElementById("lyric-submit-form")
+    b = document.getElementById("reveal-form-btn")
+    b.innerHTML = "Submit Lyric Request"
     n.style.visibility = "hidden"
     l.style.visibility = "hidden"
     f.style.display = "none"
