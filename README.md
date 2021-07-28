@@ -1,5 +1,5 @@
 # LyricGuesser
-This application is a simple guessing game, created to give the user the ablility to generate a random song lyric, and then try to guess either the artist, song name, year released or genre. The user may also submit their own lyric to be reviewed and added to the game database. 
+This application is a simple guessing game, created to give the user the ablility to generate a random song lyric, and then try to guess either the artist, song name, album, year released or genre. The user may also submit their own lyric to be reviewed and added to the game database. 
 
 ## Installation
 
@@ -11,7 +11,7 @@ git clone https://github.com/ecastille924/LyricGame
 
 Once the repo is open in your local environment, CD into '/backend' and run 'rails s' in order to get the server running.  
 
-Once the server is running on your local pc, in your browser, open this project's index.html file (right click on 'index.html', and choose 'copy path', then open your browser, and paste the path into the address bar). 
+With the server running on your local pc, in your browser, open this project's index.html file (right click on 'index.html', and choose 'copy path', then open your browser, and paste the path into the address bar). 
 
 When the page loads, a random song lyric will appear on the screen. A user may either click the "reveal artist" button to reveal the lyric's artist, song title, album, genre, and release year, OR click the "random song lyric" button to generate a new random song lyric from the database. A user may also click the "submit lyric request" button to load a form with fields to enter and submit their own lyric to the database. 
 
@@ -22,7 +22,7 @@ Contributing welcome. Please contact the owner of the repository before making a
 ## License
 
 The repository is available as open source under the terms of the MIT License. 
-Copyright 2020 Erick Castille
+Copyright 2021 Erick Castille
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
