@@ -135,8 +135,6 @@ function clearForm(){
     document.getElementById("new-lyric").reset()
 }
 
-
-
 // Count total records -- This fetch request is not being used currently.
 function countLyrics(){
     fetch(`${baseUrl}/lyrics`)
