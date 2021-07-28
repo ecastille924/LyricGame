@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const baseUrl = "http://localhost:3000"
 
-function fetchOneRandomLyric()
-{   n = document.getElementById("artist-container")
+function fetchOneRandomLyric(){   
+    n = document.getElementById("artist-container")
     l = document.getElementById("lyric-info-container")
     f = document.getElementById("lyric-submit-form")
     b = document.getElementById("reveal-form-btn")
@@ -15,7 +15,7 @@ function fetchOneRandomLyric()
     l.style.visibility = "hidden"
     f.style.display = "none"
     // Second argument in math.random should match total DB records
-    let id = Math.floor(Math.random() * (25) + 1)
+    let id = Math.floor(Math.random() * (27) + 1)
     fetch(`${baseUrl}/lyrics`)
     .then(resp => resp.json())
     .then(lyrics => {
@@ -136,12 +136,13 @@ function clearForm(){
 }
 
 // Count total records -- This fetch request is not being used currently.
-function countLyrics(){
-    fetch(`${baseUrl}/lyrics`)
+const getLyricCount = fetch(`${baseUrl}/lyrics`)
     .then(resp => resp.json())
-    .then(json => {
-            return Object.keys(json).length
+    .then((json) => {
+            return json.length
     })
-}
+
+
+
 
 
