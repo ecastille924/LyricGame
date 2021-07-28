@@ -11,7 +11,7 @@ git clone https://github.com/ecastille924/LyricGame
 
 Once the repo is open in your local environment, CD into '/backend' and run 'rails s' in order to get the server running.  
 
-Then, in your browser, open this project's index.html file. 
+Once the server is running on your local pc, in your browser, open this project's index.html file (right click on 'index.html', and choose 'copy path', then open your browser, and paste the path into the address bar). 
 
 When the page loads, a random song lyric will appear on the screen. A user may either click the "reveal artist" button to reveal the lyric's artist, song title, album, genre, and release year, OR click the "random song lyric" button to generate a new random song lyric from the database. A user may also click the "submit lyric request" button to load a form with fields to enter and submit their own lyric to the database. 
 
