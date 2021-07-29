@@ -34,7 +34,7 @@ class LyricsController < ApplicationController
   end
 
   private
-   
+  
     def set_lyric
       @lyric = Lyric.find(params[:id])
     end
