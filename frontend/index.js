@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     fetchOneRandomLyric();
-    createForm()
+    createForm();
+    // fetchAllRecords();
 })
 
 const baseUrl = "http://localhost:3000"
@@ -14,8 +15,8 @@ function fetchOneRandomLyric(){
     n.style.visibility = "hidden"
     l.style.visibility = "hidden"
     f.style.display = "none"
-    // Second argument in math.random should match total DB records
-    let id = Math.floor(Math.random() * (27) + 1)
+    // The argument in math.random should match total DB records
+    let id = Math.floor(Math.random() * (54) + 1)
     fetch(`${baseUrl}/lyrics`)
     .then(resp => resp.json())
     .then(lyrics => {
@@ -24,7 +25,7 @@ function fetchOneRandomLyric(){
                 let l = new Lyric(lyric.content, lyric.songName, lyric.albumName, lyric.releaseYear, lyric.genre, lyric.artist_id)
                 l.renderLyricInfo();
                 l.renderLyricContent();
-                return fetch(`${baseUrl}/artists`)
+                fetch(`${baseUrl}/artists`)
                 .then(resp => resp.json())
                 .then(artists => {
                     for (const artist of artists){
@@ -61,22 +62,41 @@ function createForm(){
     
 }
 
+function checkID(artistNameInput){
+    artistNameInput = document.getElementById("artist-name").value
+    return fetch(`${baseUrl}/artists`)
+        .then(resp => resp.json())
+        .then(artists => {
+                let foundArtist = artists.filter(function(artist){
+                    return (artist.artistName == artistNameInput)
+                })
+                return foundArtist
+        })
+}
+
 function lyricSubmission(){
     event.preventDefault();
     let artistName = document.getElementById("artist-name").value
     let artist = {
         artistName: artistName
-    }
-    fetch(`${baseUrl}/artists`, {
-        method: "POST",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(artist)
+    } 
+    checkID(artistName)
+    .then((foundArtistArray) => {
+        if (!foundArtistArray.length) 
+        // artist Id doesn't exist, create new artist
+        return fetch(`${baseUrl}/artists`, {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(artist)
+        }) 
+        .then(resp => resp.json())
+        else
+        return foundArtistArray[0]
     })
-    .then(resp => resp.json())
-    .then(artist => {
+    .then(artist => { 
         let a = new Artist(artist.artistName, artist.id)
         let content = document.getElementById("lyric-content").value
         let songName = document.getElementById("song-name").value
@@ -92,7 +112,7 @@ function lyricSubmission(){
             genre: genre,
             artist_id: artist_id
         }
-        return fetch(`${baseUrl}/lyrics`, {
+        fetch(`${baseUrl}/lyrics`, {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -103,7 +123,7 @@ function lyricSubmission(){
         .then(res => res.json())
         .then(lyric => { 
             let l = new Lyric(lyric.content, lyric.songName, lyric.albumName, lyric.releaseYear, lyric.genre, lyric.artist_id)
-            .then(clearForm())
+            clearForm()
         })
      })
 }
@@ -135,14 +155,24 @@ function clearForm(){
     document.getElementById("new-lyric").reset()
 }
 
-// Count total records -- This fetch request is not being used currently.
-const getLyricCount = fetch(`${baseUrl}/lyrics`)
-    .then(resp => resp.json())
-    .then((json) => {
-            return json.length
+function fetchAllRecords(){
+
+    let artistApiCall = fetch(`${baseUrl}/artists`);
+    let lyricApiCall = fetch(`${baseUrl}/lyrics`);
+
+    Promise.all([artistApiCall, lyricApiCall])
+    .then(data => Promise.all(data.map(data => data.json())))
+    .then(allData => {
+        let artistResp = allData[0]
+        let lyricResp = allData[1]
+        console.log(artistResp, lyricResp)
     })
+}
 
 
 
-
+// fetch artist endpoint 
+// convert json to JS object 
+// grab a user's input and compare it to artist records
+//-- if it matches a record, assign it to that artist ID 
 
