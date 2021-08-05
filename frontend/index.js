@@ -16,7 +16,7 @@ function fetchOneRandomLyric(){
     l.style.visibility = "hidden"
     f.style.display = "none"
     // The argument in math.random should match total DB records
-    let id = Math.floor(Math.random() * (54) + 1)
+    let id = Math.floor(Math.random() * (60) + 1)
     fetch(`${baseUrl}/lyrics`)
     .then(resp => resp.json())
     .then(lyrics => {
@@ -129,18 +129,18 @@ function lyricSubmission(){
 }
 
 function revealArtist(){
-    n = document.getElementById("artist-container")
+    let n = document.getElementById("artist-container")
     n.style.visibility = "visible"
 }
 
 function revealLyricInfo(){
-    i = document.getElementById("lyric-info-container")
+    let i = document.getElementById("lyric-info-container")
     i.style.visibility = "visible"
 }
 
 function toggleForm(){
-    f = document.getElementById("lyric-submit-form")
-    b = document.getElementById("reveal-form-btn")
+    let f = document.getElementById("lyric-submit-form")
+    let b = document.getElementById("reveal-form-btn")
     if (f.style.display == "none"){
         f.style.display = "block";
         b.innerHTML = "Hide Form";
