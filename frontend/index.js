@@ -11,7 +11,7 @@ function fetchOneRandomLyric(){
     let l = document.getElementById("lyric-info-container")
     let f = document.getElementById("lyric-submit-form")
     let b = document.getElementById("reveal-form-btn")
-    b.innerHTML = "Submit Lyric Request"
+    b.innerHTML = "Submit Song Lyric"
     n.style.visibility = "hidden"
     l.style.visibility = "hidden"
     f.style.display = "none"
@@ -149,7 +149,7 @@ function toggleForm(){
     }
     else  {
         f.style.display= "none";
-        b.innerHTML = "Submit Lyric Request";
+        b.innerHTML = "Submit Song Lyric";
     }
 }
            
