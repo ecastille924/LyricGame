@@ -1,13 +1,16 @@
 class LyricsController < ApplicationController
   before_action :set_lyric, only: [:show, :update, :destroy]
+  before_action :get_artist
 
   def index
-    @lyrics = Lyric.all
+    @lyrics = @artist.lyrics
 
     render json: @lyrics
   end
 
   def show
+    @artist = Artist.find(params[:artist_id])
+    @lyric = Lyric.find(params[:id])
     render json: @lyric
   end
 
@@ -35,6 +38,10 @@ class LyricsController < ApplicationController
 
   private
   
+    def get_artist
+      @artist = Artist.find(params[:artist_id])
+    end
+
     def set_lyric
       @lyric = Lyric.find(params[:id])
     end

@@ -1,37 +1,38 @@
 document.addEventListener("DOMContentLoaded", () => {
     fetchOneRandomLyric();
     createForm();
-    // fetchAllRecords();
+    // fetchArtists();
 })
 
 const baseUrl = "http://localhost:3000"
 
 function fetchOneRandomLyric(){   
-    n = document.getElementById("artist-container")
-    l = document.getElementById("lyric-info-container")
-    f = document.getElementById("lyric-submit-form")
-    b = document.getElementById("reveal-form-btn")
+    let n = document.getElementById("artist-container")
+    let l = document.getElementById("lyric-info-container")
+    let f = document.getElementById("lyric-submit-form")
+    let b = document.getElementById("reveal-form-btn")
     b.innerHTML = "Submit Lyric Request"
     n.style.visibility = "hidden"
     l.style.visibility = "hidden"
     f.style.display = "none"
-    // The argument in math.random should match total DB records
-    let id = Math.floor(Math.random() * (60) + 1)
-    fetch(`${baseUrl}/lyrics`)
+    fetch(`${baseUrl}/artists`)
     .then(resp => resp.json())
-    .then(lyrics => {
-        for (const lyric of lyrics){
-            if(lyric.id == id){
-                let l = new Lyric(lyric.content, lyric.songName, lyric.albumName, lyric.releaseYear, lyric.genre, lyric.artist_id)
-                l.renderLyricInfo();
-                l.renderLyricContent();
-                fetch(`${baseUrl}/artists`)
-                .then(resp => resp.json())
-                .then(artists => {
-                    for (const artist of artists){
-                        if(artist.id == lyric.artist_id){
-                            let a = new Artist(artist.artistName)
-                            a.renderArtist();
+    .then(artists => {
+        let randomArtist = artists[Math.floor(Math.random() * artists.length)]
+        for (const artist of artists){
+            if(artist == randomArtist){
+                let a = new Artist(artist.artistName, artist.id)
+                    a.renderArtist();
+                    let id = a.id
+                    fetch(`${baseUrl}/artists/${id}/lyrics`)
+                    .then(resp => resp.json())
+                    .then(lyrics => {
+                        let RandomLyr = lyrics[Math.floor(Math.random() * lyrics.length)]
+                        for (const lyric of lyrics){
+                            if(lyric == RandomLyr){
+                                let l = new Lyric(lyric.content, lyric.songName, lyric.albumName, lyric.releaseYear, lyric.genre, lyric.artist_id)
+                                l.renderLyricInfo();
+                                l.renderLyricContent();
                         }
                        
                     }    
@@ -40,6 +41,7 @@ function fetchOneRandomLyric(){
         }    
     })
 }
+
 
 function createForm(){
     let lyricForm = document.getElementById("lyric-submit-form")
@@ -112,7 +114,7 @@ function lyricSubmission(){
             genre: genre,
             artist_id: artist_id
         }
-        fetch(`${baseUrl}/lyrics`, {
+        fetch(`${baseUrl}/artists/${artist_id}/lyrics`, {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -171,8 +173,4 @@ function fetchAllRecords(){
 
 
 
-// fetch artist endpoint 
-// convert json to JS object 
-// grab a user's input and compare it to artist records
-//-- if it matches a record, assign it to that artist ID 
 
