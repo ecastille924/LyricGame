@@ -47,7 +47,7 @@ function createForm(){
     lyricForm.innerHTML =
     `
     <form id="new-lyric" class="new-lyr-form">
-    <textarea rows= "4" id="lyric-content" class="new-lyr-form-fields" placeholder= "Song Lyric" oninvalid="this.setCustomValidity('Please enter song lyrics!')" oninput=setCustomValidity('') onkeyup= enterPress(event) required ></textarea><br>
+    <textarea rows= "4" id="lyric-content" class="new-lyr-form-fields" placeholder= "Song Lyric" oninvalid="this.setCustomValidity('Please enter song lyrics!')" oninput=setCustomValidity('') onkeydown= enterPress(event) required ></textarea><br>
     <input type= "text" id="song-name" class="new-lyr-form-fields" placeholder="Song Title" oninvalid="this.setCustomValidity('Please enter song title!')" oninput=setCustomValidity('') required ><br>
     <input type= "text" id="artist-name" class="new-lyr-form-fields" placeholder= "Artist" oninvalid="this.setCustomValidity('Please enter artist name!')" oninput=setCustomValidity('') required ><br>
     <input type= "text" id="album-name" class="new-lyr-form-fields" placeholder= "Album Name" oninvalid="this.setCustomValidity('Please enter song album name!')" oninput=setCustomValidity('') required ><br>
@@ -64,9 +64,10 @@ function createForm(){
 }
 
 function enterPress(event){
+    let lBox = document.getElementById("lyric-content")
     let key = event.keyCode;
     if (key == 13) {
-        console.log("success")
+        lBox.value += (" /")
     }
 }
 
