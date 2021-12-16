@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     fetchOneRandomLyric();
     createForm();
-    // fetchArtists();
 })
 
 const baseUrl = "http://localhost:3000"
@@ -64,6 +63,8 @@ function createForm(){
     
 }
 
+//Dropdown menu instead?
+
 function checkID(artistNameInput){
     artistNameInput = document.getElementById("artist-name").value
     return fetch(`${baseUrl}/artists`)
@@ -77,6 +78,7 @@ function checkID(artistNameInput){
 }
 
 function lyricSubmission(){
+    debugger
     event.preventDefault();
     let artistName = document.getElementById("artist-name").value
     let artist = {
@@ -85,7 +87,7 @@ function lyricSubmission(){
     checkID(artistName)
     .then((foundArtistArray) => {
         if (!foundArtistArray.length) 
-        // artist Id doesn't exist, create new artist
+        // artist id doesn't exist, create new artist
         return fetch(`${baseUrl}/artists`, {
             method: "POST",
             headers: {
@@ -157,19 +159,19 @@ function clearForm(){
     document.getElementById("new-lyric").reset()
 }
 
-function fetchAllRecords(){
+// function fetchAllRecords(){
 
-    let artistApiCall = fetch(`${baseUrl}/artists`);
-    let lyricApiCall = fetch(`${baseUrl}/lyrics`);
+//     let artistApiCall = fetch(`${baseUrl}/artists`);
+//     let lyricApiCall = fetch(`${baseUrl}/lyrics`);
 
-    Promise.all([artistApiCall, lyricApiCall])
-    .then(data => Promise.all(data.map(data => data.json())))
-    .then(allData => {
-        let artistResp = allData[0]
-        let lyricResp = allData[1]
-        console.log(artistResp, lyricResp)
-    })
-}
+//     Promise.all([artistApiCall, lyricApiCall])
+//     .then(data => Promise.all(data.map(data => data.json())))
+//     .then(allData => {
+//         let artistResp = allData[0]
+//         let lyricResp = allData[1]
+//         console.log(artistResp, lyricResp)
+//     })
+// }
 
 
 

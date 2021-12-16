@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :lyrics
+  # resources :lyrics
   
   resources :artists do
     resources :lyrics

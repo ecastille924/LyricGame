@@ -9,7 +9,7 @@ class LyricsController < ApplicationController
   end
 
   def show
-    @artist = Artist.find(params[:artist_id])
+    # @artist = Artist.find(params[:artist_id])
     @lyric = Lyric.find(params[:id])
     render json: @lyric
   end

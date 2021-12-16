@@ -11,5 +11,11 @@ class Artist{
             <h2 class= "artist-text">${this.artistName}</h2>
         `    
     }   
+    lyrics(){
+        let foundSongs = Lyric.all.filter(function(lyric){
+            return (lyric.artist_id == this.id)
+        })
+        return foundSongs
+        }
 
 }

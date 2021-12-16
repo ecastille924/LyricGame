@@ -1,4 +1,5 @@
 class Lyric { 
+    static allLyrics = []
     constructor(content, songName, albumName, releaseYear, genre, artist_id){
         
         this.content = content;
@@ -7,6 +8,8 @@ class Lyric {
         this.releaseYear = releaseYear;
         this.genre = genre;
         this.artist_id = artist_id;
+
+        Lyric.allLyrics.push(this)
     }
 
     renderLyricInfo(){
@@ -24,7 +27,11 @@ class Lyric {
         `
             <p>"${this.content}"<p>
         `  
-       
-    }   
+    
    
+    }   
+    
+    static all(){
+        return allLyrics
+    }
 }
