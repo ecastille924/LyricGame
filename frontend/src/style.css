@@ -45,8 +45,8 @@ body{
   }
 
   .button{
-    margin-top: 8px;
-    margin-bottom: 8px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     color: #fff !important;
 	  text-transform: uppercase;
 	  background: #961a81;

@@ -159,6 +159,11 @@ function clearForm(){
     document.getElementById("new-lyric").reset()
 }
 
+// function insertSlash(){
+//     let l = document.getElementById("lyric-content")
+//     document.addEventListener('keyup', )
+}
+
 // function fetchAllRecords(){
 
 //     let artistApiCall = fetch(`${baseUrl}/artists`);
