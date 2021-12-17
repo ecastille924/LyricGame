@@ -59,6 +59,7 @@ function createForm(){
 
     lyricForm.addEventListener("submit", () => {
         lyricSubmission();
+        validateFourDigits();
     })
     
 }
@@ -68,6 +69,16 @@ function enterPress(event){
     let key = event.keyCode;
     if (key == 13) {
         lBox.value += (" /")
+    }
+}
+
+function validateFourDigits(){
+    let year = document.getElementById("release-year").value
+    if (year.length != 4 ){
+        alert ("year must be 4 digits")
+        return false
+    }else{
+        return true
     }
 }
 
