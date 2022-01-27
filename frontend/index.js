@@ -53,13 +53,12 @@ function createForm(){
     <input type= "text" id="album-name" class="new-lyr-form-fields" placeholder= "Album Name" oninvalid="this.setCustomValidity('Please enter song album name!')" oninput=setCustomValidity('') required ><br>
     <input type= "integer" id="release-year" class="new-lyr-form-fields" placeholder= "Year Released" oninvalid="this.setCustomValidity('Please enter release year!')" oninput=setCustomValidity('') required ><br>
     <input type= "text" id="genre" class="new-lyr-form-fields" placeholder= "Genre" oninvalid="this.setCustomValidity('Please enter genre!')" oninput=setCustomValidity('') required ><br>
-    <input onclick="clear() "type= "submit" value= "Submit" class= "button">
+    <input type= "submit" value= "Submit" class= "button"  >
     </form>
     `
 
     lyricForm.addEventListener("submit", () => {
         lyricSubmission();
-        validateFourDigits();
     })
     
 }
@@ -73,12 +72,10 @@ function enterPress(event){
 }
 
 function validateFourDigits(){
-    let year = document.getElementById("release-year").value
-    if (year.length != 4 ){
+    let year = document.getElementById("release-year")
+    if (year.value.length != 4 ){
         alert ("year must be 4 digits")
         return false
-    }else{
-        return true
     }
 }
 
@@ -98,8 +95,7 @@ function checkID(artistNameInput){
 }
 
 function lyricSubmission(){
-    debugger
-    event.preventDefault();
+    event.preventDefault()
     let artistName = document.getElementById("artist-name").value
     let artist = {
         artistName: artistName
@@ -178,6 +174,15 @@ function toggleForm(){
 function clearForm(){
     document.getElementById("new-lyric").reset()
 }
+
+function showAllArtists(){
+    fetch(`${baseUrl}/artists`)
+    .then(resp => resp.json())
+    .then(artists => {
+        console.log(artists)
+    })
+}
+
 
 
     

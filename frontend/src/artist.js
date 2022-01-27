@@ -16,6 +16,6 @@ class Artist{
             return (lyric.artist_id == this.id)
         })
         return foundSongs
-        }
+    }
 
 }

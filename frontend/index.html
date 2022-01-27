@@ -20,7 +20,7 @@
     
     <div class= "button-div">
         <button class= "button" onclick= "fetchOneRandomLyric()">Random Song Lyric</button><br>
-        <button class= "button" onclick= "revealArtist(), revealLyricInfo()">Reveal Artists</button>
+        <button class= "button" onclick= "revealArtist(), revealLyricInfo()">Reveal Artist</button>
     </div>
 
     
@@ -34,6 +34,11 @@
         </div>
     </div>
     
+    <div class= "button-div">
+        <button class="button" onclick="showAllArtists()">Show All Artists</button>
+        <p id="artists-list"></p>
+    </div>
+
     <div class= "button-div">
         <button id="reveal-form-btn" class= "button" onclick= "toggleForm();">Submit Song Lyric</button>
         <br>
