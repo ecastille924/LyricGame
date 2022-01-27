@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     fetchOneRandomLyric();
     createForm();
+    showAllArtists()
+    hideArtistDisplay()
 })
 
 const baseUrl = "http://localhost:3000"
@@ -175,16 +177,22 @@ function clearForm(){
     document.getElementById("new-lyric").reset()
 }
 
+function hideArtistDisplay(){
+    let artistList = document.getElementById("artists-list")
+    artistList.style.display = "none"
+}
+
 function toggleArtistReveal(){
     let al = document.getElementById("artists-list")
     let b = document.getElementById("artist-reveal")
+    al.style.display = "none"
     if (b.innerHTML === "Show All Artists"){
-        showAllArtists()
+        al.style.display = "block"
         b.innerHTML = "Hide Artists List"
-    } else {
-        b.innerHTML = "Show All Artists"
+    } else if(b.innerHTML === "Hide Artists List"){
         al.style.display = "none"
-    }
+        b.innerHTML = "Show All Artists"
+    }      
 }
 
 function showAllArtists(){
