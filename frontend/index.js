@@ -175,6 +175,18 @@ function clearForm(){
     document.getElementById("new-lyric").reset()
 }
 
+function toggleArtistReveal(){
+    let al = document.getElementById("artists-list")
+    let b = document.getElementById("artist-reveal")
+    if (b.innerHTML === "Show All Artists"){
+        showAllArtists()
+        b.innerHTML = "Hide Artists List"
+    } else {
+        b.innerHTML = "Show All Artists"
+        al.style.display = "none"
+    }
+}
+
 function showAllArtists(){
     fetch(`${baseUrl}/artists`)
     .then(resp => resp.json())
