@@ -179,7 +179,12 @@ function showAllArtists(){
     fetch(`${baseUrl}/artists`)
     .then(resp => resp.json())
     .then(artists => {
-        console.log(artists)
+        for (const artist of artists){
+            let artistList = document.getElementById("artists-list")
+            let p = document.createElement('p')
+            p.innerHTML= artist.artistName
+            artistList.appendChild(p)
+        }
     })
 }
 
